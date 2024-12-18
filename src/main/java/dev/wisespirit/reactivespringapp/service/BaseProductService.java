@@ -10,4 +10,5 @@ public interface BaseProductService<BT,CR,UP,ID extends Serializable> {
     Mono<BT> findById(ID id);
     Mono<BT> save(CR dto);
     Mono<BT> update(UP dto,ID id);
+    Mono<Void> delete(ID id);
 }

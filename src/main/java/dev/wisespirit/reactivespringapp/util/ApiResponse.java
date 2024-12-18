@@ -8,13 +8,18 @@ public class ApiResponse<T> {
     public ApiResponse(){
     }
     public ApiResponse(T data,int statusCode){
-        this.data = null;
+        this.data = data;
         this.statusCode = statusCode;
     }
     public ApiResponse(T data,int statusCode,String message){
         this.data = data;
         this.message = message;
         this.statusCode = statusCode;
+    }
+
+    public ApiResponse(T data,String message){
+        this.data = data;
+        this.message = message;
     }
 
 

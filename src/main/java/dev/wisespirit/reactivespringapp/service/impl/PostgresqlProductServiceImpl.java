@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.concurrent.Flow;
 
 /**
  * This class demonstrate that Service class for Postgresql database<br/>
@@ -81,6 +80,13 @@ public class PostgresqlProductServiceImpl implements BaseProductService<ProductD
                         updatedEntity.getPrice(),
                         updatedEntity.getStock()
                 )).switchIfEmpty(Mono.error(new ProductNotFoundException("failing during update")));
+    }
+
+    @Override
+    public Mono<Void> delete(Long id) {
+        return productRepository.findById(id)
+                .switchIfEmpty(Mono.error(new ProductNotFoundException("product not found : "+id)))
+                .then(productRepository.deleteById(id));
     }
 
     public Mono<Boolean> existById(Long id){

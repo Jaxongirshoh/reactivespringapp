@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-	//Cassandra
+	//Cassandra DB
 //	implementation 'org.springframework.boot:spring-boot-starter-data-cassandra-reactive'
 	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
@@ -27,7 +27,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'io.projectreactor:reactor-test'
-	//Postgresql
+	//Postgresql DB
 	runtimeOnly 'org.postgresql:r2dbc-postgresql'
 	runtimeOnly 'org.postgresql:postgresql'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

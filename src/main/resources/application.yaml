@@ -1,0 +1,21 @@
+
+
+#PostgreSQL database configuration
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/your_database
+    username: your_username
+    password: your_password
+
+
+
+
+
+#Cassandra database configuration
+#spring:
+#  cassandra:
+#    port: 9042
+#    contact-points: localhost
+#    keyspace-name: your_keyspace
+#    username: your_username
+#    password: your_password

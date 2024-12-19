@@ -69,13 +69,12 @@ docker run --name postgres-db -e POSTGRES_USER=your_username -e POSTGRES_PASSWOR
 
 ```yaml
 spring:
-  data:
-    cassandra:
-      contact-points: localhost
-      port: 9042
-      keyspace-name: your_keyspace
-      username: your_username
-      password: your_password
+  cassandra:
+    port: 9042
+    contact-points: localhost
+    keyspace-name: your_keyspace
+    username: your_username
+    password: your_password
 ```
 
 2. Ensure the Cassandra database is running. You can use Docker to set up a Cassandra instance:

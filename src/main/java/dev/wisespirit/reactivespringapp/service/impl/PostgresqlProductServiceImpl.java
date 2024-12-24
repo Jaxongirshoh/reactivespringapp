@@ -1,8 +1,8 @@
 package dev.wisespirit.reactivespringapp.service.impl;
 
-import dev.wisespirit.reactivespringapp.dto.ProductCreateDto;
-import dev.wisespirit.reactivespringapp.dto.ProductDto;
-import dev.wisespirit.reactivespringapp.dto.ProductUpdateDto;
+import dev.wisespirit.reactivespringapp.dto.product.ProductCreateDto;
+import dev.wisespirit.reactivespringapp.dto.product.ProductDto;
+import dev.wisespirit.reactivespringapp.dto.product.ProductUpdateDto;
 import dev.wisespirit.reactivespringapp.entity.Product;
 import dev.wisespirit.reactivespringapp.exception.BadRequestException;
 import dev.wisespirit.reactivespringapp.exception.ProductNotFoundException;
@@ -56,7 +56,8 @@ public class PostgresqlProductServiceImpl implements BaseProductService<ProductD
                 dto.name(),
                 dto.description(),
                 dto.price(),
-                dto.stock())).map(saved -> new ProductDto(saved.getId(),
+                dto.stock()))
+                .map(saved -> new ProductDto(saved.getId(),
                 saved.getName(),
                 saved.getDescription(),
                 saved.getPrice(),

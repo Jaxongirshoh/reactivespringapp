@@ -3,9 +3,9 @@
 #PostgreSQL database configuration
 spring:
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/your_database
-    username: your_username
-    password: your_password
+    url: r2dbc:postgresql://localhost:5432/reactivespringapp #your_database
+    username: postgres #your_username
+    password: 123 #your_password
 
 
 

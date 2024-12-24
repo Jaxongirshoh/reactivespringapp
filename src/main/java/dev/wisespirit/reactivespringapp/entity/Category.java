@@ -3,7 +3,9 @@ package dev.wisespirit.reactivespringapp.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.cassandra.core.mapping.Table;
+import org.springframework.data.relational.core.mapping.Table;
+//for Cassandra
+//import org.springframework.data.cassandra.core.mapping.Table;
 
 
 @Setter
@@ -12,6 +14,8 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
+//for Cassandra database config
+//@Table("categories")
 @Table("categories")
 public class Category extends BaseAuditable{
     @Id
@@ -19,4 +23,8 @@ public class Category extends BaseAuditable{
     private String name;
     private Long parentId;
 
+    public Category(String name,Long parentId){
+        this.name = name;
+        this.parentId = parentId;
+    }
 }

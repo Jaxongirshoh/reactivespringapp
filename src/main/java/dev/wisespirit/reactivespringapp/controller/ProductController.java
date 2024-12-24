@@ -1,8 +1,8 @@
 package dev.wisespirit.reactivespringapp.controller;
 
-import dev.wisespirit.reactivespringapp.dto.ProductCreateDto;
-import dev.wisespirit.reactivespringapp.dto.ProductDto;
-import dev.wisespirit.reactivespringapp.dto.ProductUpdateDto;
+import dev.wisespirit.reactivespringapp.dto.product.ProductCreateDto;
+import dev.wisespirit.reactivespringapp.dto.product.ProductDto;
+import dev.wisespirit.reactivespringapp.dto.product.ProductUpdateDto;
 import dev.wisespirit.reactivespringapp.exception.BadRequestException;
 import dev.wisespirit.reactivespringapp.exception.ProductNotFoundException;
 import dev.wisespirit.reactivespringapp.service.BaseProductService;
@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController()
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/v1/product")
 public class ProductController {
 
     private final BaseProductService<ProductDto,ProductCreateDto, ProductUpdateDto,Long> productService;
@@ -49,12 +49,7 @@ public class ProductController {
     public Mono<ApiResponse<ProductDto>> save(@RequestBody ProductCreateDto dto){
         return productService.save(dto)
                 .map(savedEntity ->
-                        new ApiResponse<>(new ProductDto(
-                                savedEntity.id(),
-                                savedEntity.name(),
-                                savedEntity.description(),
-                                savedEntity.price(),
-                                savedEntity.stock()), 201))
+                        new ApiResponse<>(savedEntity, 201))
                 .onErrorResume(BadRequestException.class,
                         cause->Mono.just(new ApiResponse<>(null,400,"Bad request")))
                 .onErrorResume(cause->
